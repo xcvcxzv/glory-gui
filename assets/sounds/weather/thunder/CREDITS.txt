@@ -1,0 +1,10 @@
+Thunder recordings from Wikimedia Commons, trimmed, faded and normalised:
+
+close-1: "Thunder crack 2B" by Jud McCranie, CC BY-SA 4.0
+  https://commons.wikimedia.org/wiki/File:Thunder_crack_2B.ogg
+close-2, distant-2: "Thunder Small Rumble-Car-Large Crack-Rain" by Ryan Sains, CC BY-SA 4.0
+  https://commons.wikimedia.org/wiki/File:Thunder_Small_Rumble-Car-Large_Crack-Rain.flac
+roll-1, roll-2: "Very close thunder cracks" by Delorean76, CC BY-SA 3.0
+  https://commons.wikimedia.org/wiki/File:Very_close_thunder_cracks.flac
+distant-1: "Lightning Recorded In Groningen 2018-05-13 01" by A. Whyborn, CC BY-SA 4.0
+  https://commons.wikimedia.org/wiki/File:Lightning_Recorded_In_Groningen_2018-05-13_01.wav
