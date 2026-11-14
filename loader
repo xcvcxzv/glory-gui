@@ -1,0 +1,65 @@
+local Scripts = {
+	premium = {
+		DaHood = "8d069d7164edeaa706924f0c6c694e2c",
+		PhantomForces = "9cc380dbe610002ae82525b9d53cde51",
+		Rivals = "64b309c2866441a8b9eef8e991e9e5d2",
+	},
+	free = {
+		DaHood = "c3e9c88e9701025edaf2c5b109104a13",
+		PhantomForces = "eb92111e0b3031dd2ea52c78b581649a",
+		Rivals = "47e94f079ff36639e443b4ebcbbe356e",
+	},
+}
+
+local Games = {
+	[6035872082] = "Rivals",
+	[113491250] = "PhantomForces",
+	[1008451066] = "DaHood",
+}
+
+local LoaderUrl = "https://api.luarmor.net/files/v4/loaders/%s.lua"
+local KeyLibraryUrl = "https://sdkapi-public.luarmor.net/library.lua"
+
+local NotPremium = {
+	KEY_INCORRECT = true,
+	KEY_INVALID = true,
+}
+
+local function IsPremiumKey(Key, ScriptId)
+
+	if type(Key) ~= "string" or Key == "" then
+		return false
+	end
+
+	local Loaded, Api = pcall(function()
+		return loadstring(game:HttpGet(KeyLibraryUrl))()
+	end)
+
+	if not Loaded or type(Api) ~= "table" then
+		return true
+	end
+
+	Api.script_id = ScriptId
+
+	local Checked, Status = pcall(Api.check_key, Key)
+
+	if not Checked or type(Status) ~= "table" then
+		return true
+	end
+
+	return not NotPremium[Status.code]
+end
+
+local GameName = Games[game.GameId]
+
+if not GameName then
+	game:GetService("Players").LocalPlayer:Kick("This game is not supported")
+
+	return
+end
+
+local Premium = Scripts.premium[GameName]
+local Free = Scripts.free[GameName]
+local Target = if IsPremiumKey(script_key, Premium) then Premium else Free
+
+loadstring(game:HttpGet(string.format(LoaderUrl, Target)))()
